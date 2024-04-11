@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+#divCanvas{
+    display: flex;
+    height: 86vh;
+    align-items: center;
+}
+#myCanvas{
+    height: 480px;
+    width: 640px;
+}
+
+p{
+    height: 12vh;
+}

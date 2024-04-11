@@ -3,7 +3,8 @@ console.log();
 
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
-
+ctx.fillStyle = 'blue';
+ctx.fillRect(50, 50, 200, 100);
 
 let opciones = ["yellow","black","blue","gray","red","white"];
 let boton = document.getElementById("boton");
@@ -33,5 +34,3 @@ boton.addEventListener("click",()=>{
     body.classList.add(body.color);
 });
 
-ctx.fillStyle = 'blue';
-ctx.fillRect(50, 50, 200, 100);
