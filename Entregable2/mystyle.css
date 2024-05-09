@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+button:hover,select:hover{
+    background-color: rgb(180, 180, 180);
+    outline: 1px double black;
+}
+.icon{
+    height: 1.5rem;
+}
+.pressed:hover{
+    background-color: lightskyblue;
+}
+body{
+    background-color: gray;
+}
+i::before{
+    background:transparent;
+}
+#toolBar{
+    background-color: rgb(124, 120, 120);
+    border: 1px solid black;
+    padding: 5px;
+}
+#loadImage{
+    display: none;
+}
+#tools,#options,button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+button,select{
+    font-size: 1.5rem;
+}
+button{
+    border: 2px solid black;
+    padding: 3px;
+    height: fit-content;
+    margin: 2px;
+}
+ul{
+    display: flex;
+}
+canvas{
+    border-style: outset;
+    border: 2px solid black;
+}
+
+li{
+    background-color: grey;
+    margin: 5px;
+    height: 30px;
+    width: 30px;
+    list-style: none;
+    border: 2px solid black;
+}
+.pressed{
+    border: 2px inset gray;
+    background-color: lightskyblue;
+}
+
+.unpressed{
+    border: 2px outset black;
+}
+#color1{
+    background-color: rgba(0, 0,0, 255);
+}
+#color2{
+    background-color: rgba(255,255,255, 255);
+}
+#color3{
+    background-color: rgba(255,255,0, 255);
+    
+}
+#color4{
+    background-color: rgba(255,0,255, 255);
+}
+#color5{
+    background-color: rgba(0,255,255, 255);
+}
+#color6{
+    background-color: rgba(255,0,0, 255);
+}
+#color7{
+    background-color: rgba(0,255,0, 255);
+}
+#color8{
+    background-color: rgba(0,0,255, 255);
+}
+#color9{
+    background-color: rgba(128,128,128, 255);
+}
+
+.liSelected{
+    border: 3px solid black;
+    outline: 4px double black;
+}
+

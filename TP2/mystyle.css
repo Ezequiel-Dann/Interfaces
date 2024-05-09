@@ -6,7 +6,6 @@
 
 body{
     display: flex;
-    align-items: center;
     height: 100vh;
     flex-direction: column;
 }
@@ -18,8 +17,4 @@ body{
 #myCanvas{
     height: 480px;
     width: 640px;
-}
-
-p{
-    height: 12vh;
 }

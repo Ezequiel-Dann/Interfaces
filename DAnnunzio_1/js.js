@@ -433,5 +433,3 @@ for (let index = 0; index < 4; index++) {
 
 //let boton =document.getElementById("boton");
 //boton.addEventListener("click",addRandomFigure);
-
-
