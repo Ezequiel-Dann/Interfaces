@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    <title>Document</title>
+</head>
+<body>
+        <div id="goma" ></div>
+        <section id="toolBar">
+            <div id="options">
+                <input type="file" id="loadImage">
+                <button class="btnNoTool" id="blankCanvas"><img class="icon" src="Icons/file.svg">Nuevo Lienzo</button>
+                <button class="btnNoTool" id="btnLoad"><img class="icon" src="Icons/upload.svg">Cargar Imagen</button>
+                <button class="btnNoTool" id="btnDownload"><img class="icon" src="Icons/download.svg"></i>Descargar Imagen</button>
+                
+                <button id="btnApplyFilter"><i class="fa-solid fa-sliders"></i>Aplicar Filtro</button>
+                <select id="filterSelect">
+                    <option value=1>Sepia</option>
+                    <option value=2>Binarizacion</option>
+                    <option value=3>Escala de Grises</option>
+                    <option value=4>Negativo</option>
+                    <option value=5>Blur</option>
+                    <option value=6>Aumentar Saturacion</option>
+                    <option value=7>Aumentar Brillo</option>
+                </select>
+
+            </div>
+            
+            <div id="tools">
+                <ul id="colors">
+                    <li id="color1"></li>
+                    <li id="color2"></li>
+                    <li id="color3"></li>
+                    <li id="color4"></li>
+                    <li id="color5"></li>
+                    <li id="color6"></li>
+                    <li id="color7"></li>
+                    <li id="color8"></li>
+                    <li id="color9"></li>
+                    <li id="color10"></li>
+                </ul>
+                <button class="unpressed" id="btnPen" alt="Lapiz"><img class="icon" src="Icons/pen.svg"></i>Lapiz</button>
+                <button class="unpressed"id="btnEraser"><img class="icon" src="Icons/eraser.svg"></i>Goma</button>
+                <button class="unpressed"id="btnColorPick"><img class="icon" src="Icons/eye-dropper.svg"></i>Cuentagotas</button>
+            </div>
+        </section>
+        <canvas id="myCanvas" width="1240" height="700"></canvas>
+    </div>
+
+    <script src="Pen.js"></script>
+    <script src="filtros.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

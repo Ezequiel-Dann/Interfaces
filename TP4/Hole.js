@@ -1,0 +1,3 @@
+class Hole extends obstacle{
+    
+}

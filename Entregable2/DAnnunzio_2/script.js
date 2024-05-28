@@ -179,7 +179,6 @@ canvas.addEventListener("mousedown",(e)=>{
 
     pen.x=x; //TODO get y set
     pen.y=y;
-    pen.chooseFill();
     pen.useTool(x,y)
     drawing=true;
 });
@@ -188,7 +187,6 @@ canvas.addEventListener("pointermove",(e)=>{
     let distances = canvas.getBoundingClientRect();
     let x = e.clientX-distances.left;
     let y = e.clientY-distances.top;
-    
 
     if(drawing==true){                                              
         pen.useTool(x,y);                                           
@@ -208,7 +206,6 @@ document.addEventListener("keydown",(e)=>{
 });
 document.addEventListener("mouseup",(e)=>{
     drawing=false;  
-    
 })
 
 btnPen.click();

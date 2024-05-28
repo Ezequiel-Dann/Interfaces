@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    <title>Reportar Perfil</title>
+</head>
+<body>
+    <header><img id="logo" src="logo/logo.svg"></header>
+    <form id="formPage1" method="post">
+        <h1>Reportar Perfil</h1>
+            <div class="report">
+                
+                <div id="searchDiv" class="textInputDiv">
+                    <label id="labelProfile" class="formSection" for="inputProfile">Perfil a reportar</label>
+                    <input  id=inputProfile type="text" placeholder="Buscar Perfil" name="profile">
+                    <span id="profileError" class="inputError"></span>
+                    <ul class="profiles"></ul>
+                </div>
+            
+                <span class="formSection">Motivo</span> <!-- El motivo seria el asunto del reporte-->
+                <fieldset class="checkboxes">
+                    <span  id="checkboxError" class="inputError"></span>
+                    <div class="checkboxInputDiv">           
+                        <label for="subjectHarassing">Acoso</label>
+                        <input type="checkbox" id="subjectHarassing" name="harassing">                   
+                    </div>
+
+                    <div class="checkboxInputDiv">            
+                        <label for="subject18plus">Contenido para Adultos</label>
+                        <input type="checkbox" id="subject18plus" name="nsfwContent">
+                    </div>
+                    
+                    <div class="checkboxInputDiv">          
+                        <label for="subjectCopyright">Robo de contenido</label>
+                        <input type="checkbox" id="subjectCopyright" name="copyrightInfilgment">
+                    </div>
+
+                    <div class="checkboxInputDiv">         
+                        <label for="subjectIllegal">Actividades Ilegales</label>
+                        <input type="checkbox" id="subjectIllegal" name="illegalActivities">
+                    </div>
+
+                    <div class="checkboxInputDiv">
+                        <label for="subjectOther">Otros</label>
+                        <input type="checkbox" id="subjectOther" name="otherSubject">
+                    </div>
+                </fieldset>
+
+                <div id="commentContainer" class="textInputDiv">
+                    <label for="inputComment">Informacion Adicional</label>
+                    <span id="commentError" class="inputError"></span>
+                    <textarea id="inputComment" name="comment"></textarea>
+                    <p>Algun ejemplo o informacion que nos ayude a identificar la infraccion</p>
+                </div>
+
+                <button id="continueButton">Continuar</button>
+            </div>
+        </form>
+        <form id=formPage2 class="page2 hidden">
+            <fieldset class="personalInfo">
+                <span class="formSection" >Informacion de Contacto</span>
+    
+                <div class="textInputDiv">
+                    <label for="inputName">Nombre</label>
+                    <span id="nameError" class="inputError"></span>
+                    <input type="text" id="inputName" name="name">
+                </div>
+    
+                <div class="textInputDiv">        
+                    <label for="inputSurname">Apellido</label>
+                    <span  id ="surnameError"class="inputError"></span>
+                    <input type="text" id="inputSurname" name="surname">
+                </div>
+
+                <div class="contactInfoHelp">
+                    <p>Ingrese uno o mas metodos de contacto</p>
+                    <span id="contactError" class="inputError "></span>
+                </div>
+                <div class="textInputDiv">           
+                    <label for="inputPhone">Telefono</label>
+                    <span id="phoneError" class="inputError "></span>
+                    <input type="tel" id="inputPhone" name="phone">
+                </div>
+    
+                <div class="textInputDiv">          
+                    <label for="inputEmail">Email</label>
+                    <span id="emailError" class="inputError "></span>
+                    <input type="email" id="inputEmail" name="email">
+                </div>
+                
+            </fieldset>
+    
+            <button id="sendButton">Enviar</button>
+            <button id="backButton">Volver</button>
+        </section>
+    </form>
+    <script src="js.js"></script>
+</body>
+</html>

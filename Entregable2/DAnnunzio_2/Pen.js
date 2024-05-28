@@ -6,7 +6,6 @@ class Pen {
         this.pencil= new DrawingTool(2,1,0);           
         this.eraser= new Eraser(8,2,1);
         this.colorPick = new ColorPick(1,10,10,customColorElement)
-        this.fillTool = new FillingTool(1,"2",1);
         this.tool=this.pencil;             //herramienta actual
     }
 
@@ -32,10 +31,6 @@ class Pen {
     }
     choosePick(){
         this.tool=this.colorPick;
-    }
-
-    chooseFill(){
-        this.tool=this.fillTool;
     }
     increaceSize(){
         this.tool.setSize(this.tool.getSize()+1);
@@ -64,7 +59,57 @@ class Pen {
     }*/
 
     fill(x,y){ //relleno pero muy ineficiente
+        let index = (x + y*canvas.width)*4;
+        let imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+
+        let r= imgData.data[index];
+        let g = imgData.data[index+1];
+        let b = imgData.data[index+2];
+        let a = imgData.data[index+3];
+        let colorOriginal= new Color(r,g,b,a); //color que se quiere reemplazar
+
+        let positionsX=[x];
+        let positionsY=[y];
+
+        if(this.penColor.equals(colorOriginal)){ //si ya es del color que se quiere pintar no hace nada
+            return;
+        }
+        while(positionsX.length>0){ 
+            /*cada posicion se guarda en los arreglos positionsX y positionsY
+            se pinta el pixel sacado de los arreglos del color del relleno
+            cada pixel adjacente del mismo color que el pixel original que se pinto se guarda en los arreglos
+            lo intente hacer recursivo pero tiro call stack size exceeded
+            */
+            let x=positionsX.pop();
+            let y=positionsY.pop();
+
+            let index = (x + y*imgData.height)*4;
+            
+            imgData.data[index]=this.penColor.getRed();                                         //se pinta del color seleccionado
+            imgData.data[index+1]=this.penColor.getGreen();
+            imgData.data[index+2]=this.penColor.getBlue();
+            imgData.data[index+3]=255;
+
+            if(x+1>=0 && x<imgData.width && pixelColor(imgData,index+4).equals(colorOriginal)){
+                positionsX.push(x+1);
+                positionsY.push(y);
+            }
+            if(x-1>=0 && x<imgData.width && pixelColor(imgData,index-4).equals(colorOriginal)){
+                positionsX.push(x-1);
+                positionsY.push(y);
+            }
+            if(y+1>=0 && y<imgData.height && pixelColor(imgData,index+imgData.height*4).equals(colorOriginal)){
+                positionsX.push(x);
+                positionsY.push(y+1);
+            }
+            if(y-1>=0 && y<imgData.height && pixelColor(imgData,index-imgData.height*4).equals(colorOriginal)){
+                positionsX.push(x);
+                positionsY.push(y-1);
+            }
         
+        }
+
+        ctx.putImageData(imgData,0,0);
     }
 
 
@@ -154,80 +199,6 @@ class Tool{
     }
     
 }
-
-function noContiene(arr,json) {
-    for (let i =0;i<arr.length;i++) {
-        if(arr[i].x==json.x && arr[i].y==json.x){
-            return false;
-        }
-    }
-    return true;
-}
-
-class FillingTool extends Tool{
-    apply(x,y,ctx){
-        let imgData = ctx.getImageData(0,0,ctx.canvas.width,ctx.canvas.height);
-        let visitados = [];
-        ctx.willReadFrecuently==true;
-        this.applyRecursive(x,y,visitados,imgData);
-        ctx.putImageData(imgData,0,0);
-    }
-
-    applyRecursive(x,y,visitados,imageData){
-        let index = (x + y*canvas.width)*4;
-        let imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
-
-        let r= imgData.data[index];
-        let g = imgData.data[index+1];
-        let b = imgData.data[index+2];
-        let a = imgData.data[index+3];
-
-        let positionsX=[x];
-        let positionsY=[y];
-        
-        if(imgData.data[index]=255&& imgData.data[index+1]==0){ //si ya es del color que se quiere pintar no hace nada
-            return;
-        }
-        console.log("asd");
-        while(positionsX.length>0){ 
-            /*cada posicion se guarda en los arreglos positionsX y positionsY
-            se pinta el pixel sacado de los arreglos del color del relleno
-            cada pixel adjacente del mismo color que el pixel original que se pinto se guarda en los arreglos
-            lo intente hacer recursivo pero tiro call stack size exceeded
-            */
-            let x=positionsX.pop();
-            let y=positionsY.pop();
-
-            let index = (x + y*imgData.height)*4;
-            
-            imgData.data[index]=255;                                         //se pinta del color seleccionado
-            imgData.data[index+1]=255;
-            imgData.data[index+2]=255;
-            imgData.data[index+3]=255;
-            
-            if(x+1>=0 && x<imgData.width && imgData.data[1+index+4]==255){
-                positionsX.push(x+1);
-                positionsY.push(y);
-            }
-            if(x-1>=0 && x<imgData.width && imgData.data[1+index-4]==255){
-                positionsX.push(x-1);
-                positionsY.push(y);
-            }
-            if(y+1>=0 && y<imgData.height && imgData.data[1+index+imgData.width*4]==255){
-                positionsX.push(x);
-                positionsY.push(y+1);
-            }
-            if(y-1>=0 && y<imgData.height && imgData.data[1+index-imgData.width*4]==255){
-                positionsX.push(x);
-                positionsY.push(y-1);
-            }
-        
-        }
-
-        ctx.putImageData(imgData,0,0);
-    }
-}
-
 
 class DrawingTool extends Tool{   
     apply(x,y,ctx){                     //dibuja un circulo en la posicion x,y, es el lapiz

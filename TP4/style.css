@@ -1,0 +1,174 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    max-height: 100%;
+}
+
+#contenedor,
+#cielo,
+#piso {
+    width: 100%;
+}
+
+#contenedor {
+    height: 100%;
+    overflow-y: hidden; 
+    overflow-x: hidden;
+}
+
+body {
+    overflow-y: hidden; 
+    overflow-x: hidden;
+}
+
+#cielo {
+    height: 80%;
+    background: url("images/sprite_explosion_fx_0001.png") repeat-x;
+    background-size: 1280px 100%;
+    position: absolute;
+    
+}
+
+
+#piso {
+    height: 20%;
+    background: url("images/floor.png") repeat-x;
+    background-size: 831px 100%;
+    position: absolute;
+    bottom: 0px;
+    z-index: 0;
+}
+
+.backgroundAnimation{
+    animation: sky 15s linear infinite;
+}
+
+.floorAnimation{
+    animation: floor 2s linear infinite;
+}
+
+@keyframes floor {
+    0% {
+        background-position: 831px
+    }
+    
+    100% {
+        background-position: 0
+    }
+}
+.enemigo {
+    position: absolute;
+    bottom: 20%;
+    width: 100px;
+    height: 80px;
+    background-color: black;
+    animation: enemigo 2.5s forwards linear;
+}
+
+#personaje {
+    width: 80px;
+    height: 100px;
+    z-index: 1;
+    position: absolute;
+    bottom: 18%;
+    left: 100px;
+}
+
+.running {
+    animation: correr 1s steps(10, start) infinite;
+    background: url("images/running.png") repeat-x;
+}
+
+.rolling {
+    animation: roll 0.8s steps(12, start) 1;
+    background: url("images/roll.png") repeat-x;
+}
+
+.jumping {
+    animation: 
+    jump 1s ease-in-out;
+    background: url("images/jump-up.png");
+}
+
+
+@keyframes sky {
+    0% {
+        background-position: 1280px
+    }
+
+    100% {
+        background-position: 0
+    }
+}
+
+
+@keyframes jump{
+    0% {
+        bottom: 18%;
+    }
+    50%{
+        bottom: 50%;
+    }
+    100%{
+        bottom: 18%;
+    }
+}
+@keyframes roll {
+    0% {
+        background-position: 0
+    }
+    
+    100% {
+        background-position: -960px
+    }
+}
+
+
+@keyframes correr {
+    0% {
+        background-position: 0
+    }
+    
+    100% {
+        background-position: -800px
+    }
+}
+
+
+
+
+
+
+
+
+
+
+@keyframes enemigo {
+    from {
+        left: 100%;
+    }
+    to {
+        left: -10%;
+    }
+}
+
+
+
+.stopAnimation{
+    animation-play-state: paused;
+}
+
+#clock,#score{
+    position: absolute;
+    background-color:transparent;
+    z-index: 3;
+    font-size: 2rem;
+    color: red;
+    font-weight: 500;
+}
+
+#score{
+    right: 0px;
+}
